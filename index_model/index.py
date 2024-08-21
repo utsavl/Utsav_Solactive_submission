@@ -11,7 +11,7 @@ class IndexModel:
     
     
     def __init__(self) -> None:
-        self.stock_prices = pd.read_csv('stock_prices.csv')
+        self.stock_prices = pd.read_csv("../data_sources/stock_prices.csv")
         self.stock_prices['Date'] = pd.to_datetime(self.stock_prices['Date'],format = '%d/%m/%Y')
         
 
@@ -58,6 +58,7 @@ class IndexModel:
         final['index_level'] = (final['pct_change'].cumsum()+100)
         
         self.model_output = final.copy()
+        print('Index level calculated')
 
 
     def export_values(self, file_name: str) -> None:
